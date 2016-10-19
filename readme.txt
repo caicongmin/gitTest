@@ -5,3 +5,4 @@ add new line test
 add a license text
 diff 
 it is a dev
+add a change and master
