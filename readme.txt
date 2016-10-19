@@ -7,3 +7,4 @@ diff
 it is a dev
 add a change with ccm
 这是dev分支
+不用快速合并
