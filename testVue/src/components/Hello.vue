@@ -1,8 +1,8 @@
 <template>
   <div class="hello">
+    <h1>{{ count }}</h1>
     <span>高度: </span><input type="text" v-model.lazy="heightInfo" >px
     <span>宽度: </span><input type="text" v-model.lazy="widthInfo">px
-
     <chartjs-line :labels="labels" :data="labelData" :width="width" :height="height" :beginzero="beginzero" :datalabel="datalabel" :linetension="linetension" v-if="upDate"></chartjs-line>
   </div>
 </template>
@@ -12,6 +12,19 @@ const labelDataTable = () => { return [20, 60, 40, 50, 500] }
 const labels = () => { return [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60] }
 export default {
   name: 'hello',
+  mounted () {
+//    console.log('this.$nextTick', this.$nextTick)
+    console.log('this', this)
+//    console.dir(this.$nextTick)
+    this.$nextTick(() => {
+      console.log('@@@@@@@@@@!!!!!!!!!!!!!!cai')
+    })
+    console.log('@@@@@@@@@@@@ mounted', this.$store)
+    console.log('@@@@@@@@@@@@ state', this.$store.state)
+    console.log('@@@@@@@@@@@@ count', this.$store.state.count)
+    this.$store.commit('increment')
+    console.log('@@@@@@@@@@@@ count', this.$store.state.count)
+  },
   data () {
     return {
       upDate: true,
@@ -24,6 +37,11 @@ export default {
       heightInfo: '',
       widthInfo: '',
       linetension: 0.2
+    }
+  },
+  computed: {
+    count () {
+      return this.$store.state.count
     }
   },
   watch: {

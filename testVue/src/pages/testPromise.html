@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+</head>
+<body>
+<h1>测试Promise</h1>
+</body>
+<script>
+  setTimeout(() => {console.log('@@@@@@@@@@@@@@@@ four')}, 0)
+  let p = new Promise((resolve, reject) => {return resolve('ccc')})
+  console.dir(Promise)
+  p.then(() => {
+    setTimeout(() => {console.log('@@@@@@@@@@@@@@@@ two')}, 0)
+    console.log('@@@@@@@@@@@@@@ one')
+  })
+  let callBack = []
+  function cai () {
+    console.log('@@@@@@@@@@@@ cai')
+  }
+  callBack.push(cai)
+  callBack.push(cai)
+  console.log('callBack', callBack)
+  callBack[0]()
+  let copies = callBack.slice(0)
+  console.log('@@@@@@@@@@@@@@@@@@ copies', copies)
+
+  let propertyCcm = 'ccm'
+  let propertyCai = 'cai'
+  var getter = 1 && propertyCai
+  var setter = '5' && '6'
+  console.log('@@@@@@@@@@ getter', getter)
+  console.log('@@@@@@@@@@ setter', setter)
+
+  let obj = NaN
+  console.log('@@@@@@@@@@ obj 1', obj === obj)
+  console.log('@@@@@@@@@@ obj 2', isNaN(obj))
+  let b = NaN
+  console.log('@@@@@@@@@@@ b', b !== b)
+</script>
+</html>

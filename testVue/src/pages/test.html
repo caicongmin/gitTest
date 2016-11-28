@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  var c1 = 6
+  function f() {
+    this.c1 = 5
+    console.log('@@@@@@@@@@2 f this', this)
+    var g = function () {
+      console.log('@@@@@@@@@ this ', this)
+      return c1
+    }
+  }
+  var h = {}
+  f.prototype.ccm = 'cccccccccccc'
+  h = new f()
+  h.constructor.prototype.ccm2 = '22222222ccm'
+  h.c3 = '1111111'
+  var h2 = Object(new f())
+  console.log('@@@@@@@@@@@f', f())
+  console.log('@@@@@@@@@@@ 4444444444444444$$$$$$$$$$$', h.constructor.prototype === h.__proto__)
+  console.log('@@@@@@@@@@@ h', h)
+  console.log('@@@@@@@@@@@ h2', h2)
+  var person = {
+    name: 'ccm',
+    age: '22'
+  }
+  console.dir(person)
+</script>
+</body>
+</html>
