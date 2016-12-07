@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/svg-loaders/audio.svg" width="40" alt="" style="background-color: red">
+    <img src="./assets/svg-loaders/oval.svg" width="40" alt="" style="background-color: red">
     <hello></hello>
   </div>
 </template>
@@ -29,8 +29,13 @@ export default {
     console.log('@@@@@@@@@@this.store', this.store)
     console.log('@@@@@@@@@@ this.$store', this.$store)
     console.log('@@@@@@@@@@ store', store)
-    console.log('@@@@@@@@@@ vuex', Vuex)
+    console.log('@@@@@@@@@@ vuex', Vuex
     store.commit('increment')
+  },
+  methods: {
+    mousemove () {
+      console.log('@@@@@@@@@@@@@@@2')
+    }
   },
   store
 }

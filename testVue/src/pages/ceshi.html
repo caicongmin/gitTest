@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+</head>
+<body>
+
+</body>
+<script>
+//  (function () {
+//    function Store () {
+//      this.$a = 111
+//    }
+//    Store.constructor = function (info) {
+//      return info
+//    }
+//    console.log('Store', Store)
+//    let a = new Store({$b: 3})
+//    console.log('a', a)
+//  })()
+  console.dir(Array)
+  let arguments = [1, 2, 3, 4]
+  console.log('@@@@@@@@@', Array.isArray(arguments))
+  console.dir(arguments.slice)
+  let aArgs = arguments.slice(1)
+  console.log('aArgs', aArgs)
+  function test(){
+    // 检测arguments是否为Array的实例
+    console.log('arguments', arguments)
+    console.log(
+      arguments instanceof Array, //false
+      Array.isArray(arguments)  //false
+    )
+    // 判断arguments是否有forEach方法
+    console.log(arguments.forEach)
+    // undefined
+    // 将数组中的forEach应用到arguments上
+    Array.prototype.forEach.call(arguments,function(item){
+      console.log(item) // 1 2 3 4
+    })
+  }
+  test(1,2,3,4)
+  function f (a, b) {
+    return a + b
+  }
+  function f (b) {
+    return b - 10
+  }
+  console.log('f@@@@@@@@@@@@@@', f(20))
+
+  console.log('//////////////////////////////////////')
+  console.log('//////////////////////////////////////')
+  console.log('//////////////////////////////////////')
+//  function 内置arguments对象 与形参只有当实参传递了值时才相关
+//  arguments并不是Array的实例
+  let $testCai = [1, 2, 3]
+  Array.prototype.test = 'cai'
+  console.log('@@@@@@@@ $testCai', $testCai)
+  console.log('@@@@@@@@ $testCai.test', $testCai.test)
+  function $c () {
+    arguments.constructor.prototype.test = 'cai2'
+  }
+  $c()
+  function $c1 (a, b, c) {
+    console.log('a, b, c', a, b, c)
+    console.log('arguments', arguments)
+    a = 100
+    b = 200
+    c = 300
+    console.log('a, b, c', a, b, c)
+    console.log('arguments', arguments)
+    console.log('arguments.test', arguments.test)
+    arguments[0] = 10
+    arguments[1] = 20
+    arguments[2] = 30
+    console.log('a, b, c', a, b, c)
+    console.log('arguments', arguments)
+  }
+  $c1(1, 2)
+  $c2()
+  function $c2() {
+    console.log('22222222222')
+  }
+  let $c3 = function $c4() {
+    if (!this.count) this.count = 1
+    console.log('@@@@@@@@@@@@', this.count)
+    if (this.count > 10) {
+      return
+    }
+    this.count++
+    $c4()
+  }
+  $c3()
+</script>
+</html>
