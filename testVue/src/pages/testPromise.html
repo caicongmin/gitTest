@@ -62,8 +62,7 @@
   let ccm = _toString(caicm)
   console.dir(ccm)
   console.log('@@@@@@@@@@@@@@ _toString', ccm)
-
-  console.log('/////////////////////////////////////////////////')
+  console.log('////////////')
   let n = 1
   let a = 3
   console.log('@@@@@@@@@@@@@@ ||', n || a)
@@ -73,11 +72,15 @@
   console.log('@@@@@@@@@@@@ cai$1', cai$1)
   console.log('@@@@@@@@@@@@ cai$1', cai$1)
 
-  console.log('/////////////////////////////////////////////////')
+  console.log('///////////')
 
   let p1 = new Promise(function (resolve, reject) {
     console.log('p1 is beging', resolve)
-    setTimeout(() => {return resolve('2')}, 5000)
+    setTimeout(() => {
+      console.log('!!!!!!!!!!!!!!!!!')
+      resolve('2')
+      console.log('@@@@@@@@@@@@@@@@')
+    }, 5000)
   })
   let p2 = Promise.resolve()
   let p3 = Promise.resolve()
@@ -102,5 +105,10 @@
   inner.push($v1)
   inner.push($v2)
   console.log('inner', inner)
+  //  map 类似for of
+  inner.map((item, index) => {
+    console.log('item', item)
+    console.log('index', index)
+  })
 </script>
 </html>

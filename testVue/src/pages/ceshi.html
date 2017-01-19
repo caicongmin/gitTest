@@ -49,9 +49,9 @@
   }
   console.log('f@@@@@@@@@@@@@@', f(20))
 
-  console.log('//////////////////////////////////////')
-  console.log('//////////////////////////////////////')
-  console.log('//////////////////////////////////////')
+  console.log('/////////////////')
+  console.log('/////////////////')
+  console.log('////////////////')
 //  function 内置arguments对象 与形参只有当实参传递了值时才相关
 //  arguments并不是Array的实例
   let $testCai = [1, 2, 3]
@@ -92,5 +92,38 @@
     $c4()
   }
   $c3()
+  //    闭包
+  console.log('/////////////////');
+  console.log('////////////////');
+  var Utils = (function () {
+    var Number = 0
+    var Utils = function () {
+      console.log('Number', Number)
+      console.log('this', this)
+      return Number++
+    };
+    return Utils
+  })()
+  console.log('Utils', Utils())
+  console.log('Utils', Utils())
+  console.log('/////////////////////')
+  var $d1, $d2
+  $d1 = ($d2 = 3)
+  console.log('$$$$$$$$$d1', $d1)
+  console.log('$$$$$$$$$d2', $d2)
+  console.log('$$$$$$$$$d2 = 4', $d2 = 4)
+  var x = [5, 1, 2]
+//  Array.prototype.shift.call(x)
+  console.info('@@@@@@@@@x.length', x)
+  var $x = []
+  $x = x
+  console.info('@@@@@@@@@$x', $x)
+  console.info('@@@@@@@@@x111111', Array.prototype.shift.call(x))
+  console.info('@@@@@@@@@x.length22', x)
+  var $obj = new Object({a: 1, b:2, length: 2})
+  console.log('$obj', $obj)
+  Array.prototype.shift.call($obj)
+  console.log('@@@@$obj', $obj)
+  console.log('@@@@$obj11', Array.prototype.shift.call($obj))
 </script>
 </html>
