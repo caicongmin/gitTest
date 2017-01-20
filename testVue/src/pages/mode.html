@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>js设计模式</title>
+</head>
+<body>
+<h1 style="text-align: center;">JS 设计模式</h1>
+</body>
+</html>
+<script>
+  let Event = function () {
+    // __this window对象
+    var listen, log, obj, one, remove, trigger, __this
+    obj = {}
+    __this = this
+    test = function () {
+      console.log('@@@@@@ __this', __this)
+      console.log('@@@@@@@@ this', this)
+    }
+    listen = function (key, eventfn) {
+      var stack, _ref
+      console.log('@@@@@@@@@@@ listen key', key)
+      console.log('@@@@@@@@@@@ listen 11111', obj)
+      stack = (_ref = obj[key]) != null ? _ref : obj[key] = []
+      console.log('@@@@@@@@@@@ listen 22222', obj)
+      console.log('@@@@@@@@@@@ listen 33333 stack', stack)
+      console.log('@@@@@@@@@@@ listen 33333 ref', _ref)
+      return stack.push(eventfn)
+    }
+    one = function (key, eventfn) {
+      remove(key)
+      return listen(key, eventfn)
+    }
+    remove = function (key) {
+      var _ref
+      return (_ref = obj[key]) != null ? _ref.length = 0 : void 0
+    }
+    trigger = function () {
+      var fn, stack, _i, _len, _ref, key
+      console.log('@@@@@@@@@@ arguments', arguments)
+      key = Array.prototype.shift.call(arguments)
+      console.log('@@@@@@@@@@ key', key)
+      console.log('@@@@@@@@@@ arguments22222', arguments)
+      console.log('@@@@@@@@@@ _ref', obj)
+      stack = (_ref = obj[key]) != null ? _ref : obj[key] = []
+//      stack.map(item => {
+//      })
+      for (_i = 0, _len = stack.length; _i < _len; _i++) {
+        fn = stack[_i]
+        if (fn.apply(__this, arguments) === false) {
+          return false
+        }
+      }
+    }
+    return {
+      listen: listen,
+      one: one,
+      remove: remove,
+      trigger: trigger,
+      test: test
+    }
+  }
+  var cai = Event()
+  console.log('@@@@@@@@@ cai', cai)
+//  cai.test()
+  cai.listen('play', function (data1) {
+    console.log('@@@@@@@ 名字', data1.name)
+  })
+  cai.listen('play2', function (data) {
+    console.log('@@@@@@@2 名字', data.name)
+  })
+//  setTimeout(() => { cai.trigger('play2', {name: '才次啊次啊'}) }, 10000)
+//  cai.trigger('play', {name: '才次啊次啊'})
+//  console.log('item1111111')
+//  let test = function () {
+//    let a = [1, 546, 454, 45]
+//    a.map((item, key) => {
+//      console.log('item', item, key)
+//      if (key === 2) {
+//        return false
+//      }
+//    })
+//    for (let i = 0; i < a.length; i++) {
+//      console.log('for a ', a[i])
+//      if (i === 2) {
+//        return
+//      }
+//    }
+//  }
+//  test()
+//  console.log('item22222222222')
+  let $a, $cai
+//  let $cai = ($a = 5)
+  console.log('@@@@@@@ $cai', $cai = ($a = 5) + 1)
+  let $b = [0, 5, 10, -22, 11, 45, 31, 25]
+  // 快速求数组中的最大值 ⊙1 ES6解构操作符 ...
+  let $result1 = Math.max(...$b)
+  console.log('$result', $result1)
+  // ⊙2 apply应用
+  let $result2 = Math.max.apply(this, $b)
+  console.log('$result2', $result2)
+  // ⊙3 常规方法
+  let $temp
+  $b.map(item => {
+    console.log('@@@@@@@', item, $temp)
+    if ($temp || Number($temp) === 0) {
+      $temp = Math.max($temp, item)
+    } else {
+      console.log('@@@@@@@1111111111111111111', item, $temp)
+      $temp = item
+    }
+  })
+  console.log('$result3', $temp)
+  //⊙4 冒泡算法 排序
+  for(let i = 0; i< ($b.length - 1); i++) {
+    for (let j = 0; j < ($b.length - i); j++) {
+      if ($b[j] > $b[j + 1]) {
+        let temp = $b[j]
+        $b[j] = $b[j + 1]
+        $b[j + 1] = temp
+      }
+    }
+  }
+  console.log('$result4 ', $b)
+  //  模板方法模式
+  var life = function () {
+  }
+  life.prototype.init = function () {
+    this.start()
+    this.live()
+    this.end()
+  }
+  life.prototype.start = function () {
+    console.log('start')
+  }
+  life.prototype.live = function () {
+    console.log('live')
+    var a = 11
+    return a + 2
+  }
+  life.prototype.end = function () {
+    console.log('end')
+  }
+
+  var Dog = function () {
+  }
+  Dog.prototype = life.prototype
+  var dog = new Dog()
+  console.log('@@@@@@@@@@@ dog', dog)
+  dog.constructor.prototype.live = function () {
+    console.log('dog live')
+  }
+  dog.live()
+  // 备忘录模式
+  var Page = function(){
+    var page = 1,
+      cache = {},
+      data;
+    return function( page ){
+      if ( cache[ page ] ){
+        data =  cache[ page ];
+        render( data );
+      }else{
+        Ajax.send( 'cai.xx.com/xxx', function( data ){
+          cache[ page ] = data;
+          render( data );
+        })
+      }
+    }
+  }()
+  var Ajax = new XMLHttpRequest()
+  let $testAjax = Ajax.open('Get', 'http://192.168.2.67:8000/User_Config', true)
+  Ajax.onload = function (data) {
+    console.log('@@@@@@@@@@ data', data)
+    if (data.currentTarget && data.currentTarget.response) {
+      console.log('@@@@@@@@@@ data', JSON.parse(data.currentTarget.response))
+      console.log('@@@@@@@@@@ data eval', eval('(' + data.currentTarget.response + ')'))
+    }
+  }
+  Ajax.send()
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>测试布局</title>
+</head>
+<body>
+<div class="">
+<div class="content">
+  content
+  <div class="primary">
+    primary
+    <div class="primary">
+      primary in
+    </div>
+    <div class="secondary">secondary</div>
+  </div>
+  <div class="secondary">secondary</div>
+</div>
+</div>
+</body>
+<style>
+  .wrapper {
+    width: 920px;
+    margin: 0 auto;
+  }
+
+  .content {
+    overflow: hidden;
+  }
+
+  .content .primary {
+    width: 670px;
+    float: right;
+  }
+
+  .content .secondary {
+    width: 230px;
+    float: left;
+  }
+
+  .content .primary .primary {
+    width: 400px;
+    float: left;
+  }
+
+  .content .primary .secondary {
+    width: 230px;
+    padding-right: 20px;
+    float: right;
+  }
+</style>
+</html>

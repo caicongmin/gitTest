@@ -1,0 +1,44 @@
+[
+  {
+    "name": "home",
+    "path": "/home",
+    "meta": {
+      "title": "主页"
+    }
+  },
+  {
+    "name": "foo",
+    "path": "/foo",
+    "meta": {
+      "title": "foo"
+    }
+  },
+  {
+    "name": "bar",
+    "path": "/bar",
+    "meta": {
+      "title": "bar"
+    }
+  },
+  {
+    "name": "testFile",
+    "path": "/testFile",
+    "meta": {
+      "title": "testFile"
+    }
+  },
+  {
+    "name": "testHtml",
+    "path": "/testHtml",
+    "meta": {
+      "title": "testHtml"
+    }
+  },
+  {
+    "name": "hello",
+    "path": "/hello",
+    "meta": {
+      "title": "hello"
+    }
+  }
+]
