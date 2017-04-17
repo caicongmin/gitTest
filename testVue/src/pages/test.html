@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<textarea cols="20" rows="10" id="biao1">用户定义的代码区域</textarea>
+<input type="button" onClick="copyUrl2()" value="点击复制代码" />
+<script>
+  function copyUrl2()
+  {
+    var Url2=document.getElementById("biao1");
+    Url2.select(); // 选择对象
+    document.execCommand("Copy"); // 执行浏览器复制命令
+    alert("已复制好，可贴粘。");
+  }
+  var c1 = 6
+  function f() {
+    this.c1 = 5
+    console.log('@@@@@@@@@@2 f this', this)
+    var g = function () {
+      console.log('@@@@@@@@@ this ', this)
+      return c1
+    }
+  }
+  var h = {}
+  f.prototype.ccm = 'cccccccccccc'
+  h = new f()
+  h.constructor.prototype.ccm2 = '22222222ccm'
+  h.c3 = '1111111'
+  var h2 = Object(new f())
+  console.log('@@@@@@@@@@@f', f())
+  console.log('@@@@@@@@@@@ 4444444444444444$$$$$$$$$$$', h.constructor.prototype === h.__proto__)
+  console.log('@@@@@@@@@@@ h', h)
+  console.log('@@@@@@@@@@@ h2', h2)
+  var person = {
+    name: 'ccm',
+    age: '22'
+  }
+  console.dir(person)
+  window.onload = function cai (a, b) {
+    console.log('a b', a, b)
+  }
+  cai('aaaa1', 'bbbb1')
+  cai('aaaa2', 'bbbb2')
+  cai('aaaa3', 'bbbb3')
+  cai('aaaa4', 'bbbb4')
+</script>
+</body>
+</html>

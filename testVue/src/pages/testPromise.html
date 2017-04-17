@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+</head>
+<body>
+<h1>测试Promise</h1>
+</body>
+<script>
+  setTimeout(() => {console.log('@@@@@@@@@@@@@@@@ four')}, 0)
+  let p = new Promise((resolve, reject) => {return resolve('ccc')})
+  console.dir(Promise)
+  p.then((data) => {
+    setTimeout(() => {console.log('@@@@@@@@@@@@@@@@ two')}, 0)
+    console.log('@@@@@@@@@@@@@@ one', data)
+  })
+  let callBack = []
+  function cai () {
+    console.log('@@@@@@@@@@@@ cai')
+  }
+  callBack.push(cai)
+  callBack.push(cai)
+  console.log('callBack', callBack)
+  callBack[0]()
+  let copies = callBack.slice(0)
+  console.log('@@@@@@@@@@@@@@@@@@ copies', copies)
+
+  let propertyCcm = 'ccm'
+  let propertyCai = 'cai'
+  var getter = 1 && propertyCai
+  var setter = '5' && '6'
+  console.log('@@@@@@@@@@ getter', getter)
+  console.log('@@@@@@@@@@ setter', setter)
+
+  let obj = NaN
+  console.log('@@@@@@@@@@ obj 1', obj === obj)
+  console.log('@@@@@@@@@@ obj 2', isNaN(obj))
+  let b = NaN
+  console.log('@@@@@@@@@@@ b', b !== b)
+  let hasOwnProperty = Object.prototype.hasOwnProperty;
+  let objCai = {
+    name: 'cai',
+    age: 22
+  }
+  console.log('@@@@@@@@@@@@@@@ objCai', hasOwnProperty.call(objCai, 'name'))
+  function change (key ,val) {
+    console.log('key=>', key)
+    console.log('val=>', val)
+  }
+  function _toString (val) {
+    return val == null
+      ? ''
+      : typeof val === 'object'
+      ? JSON.stringify(val, null, 2)
+      : String(val)
+  }
+  let caicm = {
+    name: '111',
+    age: 33
+  }
+  let ccm = _toString(caicm)
+  console.dir(ccm)
+  console.log('@@@@@@@@@@@@@@ _toString', ccm)
+  console.log('////////////')
+  let n = 1
+  let a = 3
+  console.log('@@@@@@@@@@@@@@ ||', n || a)
+  let count = '010'
+  let cai$1 = parseInt(count, 10)
+
+  console.log('@@@@@@@@@@@@ cai$1', cai$1)
+  console.log('@@@@@@@@@@@@ cai$1', cai$1)
+
+  console.log('///////////')
+
+  let p1 = new Promise(function (resolve, reject) {
+    console.log('p1 is beging', resolve)
+    setTimeout(() => {
+      console.log('!!!!!!!!!!!!!!!!!')
+      resolve('2')
+      console.log('@@@@@@@@@@@@@@@@')
+    }, 5000)
+  })
+  let p2 = Promise.resolve()
+  let p3 = Promise.resolve()
+  let q = Promise.all([p1, p2, p3]).then((data) => {
+    console.log('q is beging', data[0])
+  })
+  let person = {
+    name: {
+      t_age: 19
+    },
+    age: 18
+  }
+  let $p = person.name
+  console.log('@@@@@@@@$p', $p)
+  console.log('@@@@@@@@@@//////////////////////')
+  let $v1 = [3, 4, 5, 6]
+  let $v2 = [7, 8, 9, 10]
+  let inner = []
+  console.log('$v1', ...$v1)
+  console.log('$v1', $v1)
+  console.log('$v2', [...$v1])
+  inner.push($v1)
+  inner.push($v2)
+  console.log('inner', inner)
+  //  map 类似for of
+  inner.map((item, index) => {
+    console.log('item', item)
+    console.log('index', index)
+  })
+</script>
+</html>
