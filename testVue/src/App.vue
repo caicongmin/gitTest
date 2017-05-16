@@ -4,8 +4,8 @@
     <!--<img src="./assets/svg-loaders/oval.svg" width="40" alt="" style="background-color: red">-->
     <!--<p class="test" v-text="testCai1"></p>-->
     <!--testCai:<input v-model="testCai">-->
-    <!--<button @click="btnClick(1)">router跳转1</button>-->
-    <!--<button @click="btnClick(2)">router跳转2</button>-->
+    <button @click="btnClick(1)">router跳转1</button>
+    <button @click="btnClick(2)">{{ cai }}</button>
     <keep-alive>
       <router-view class="app-child-view"></router-view>
     </keep-alive>
@@ -30,7 +30,8 @@ export default {
   name: 'app',
   data () {
     return {
-      testCai: '111'
+      testCai: '111',
+      cai: '蔡聪明'
     }
   },
   computed: {
@@ -74,6 +75,7 @@ export default {
       console.log('@@@@@@@@@@@@@@@2')
     },
     btnClick (index) {
+      console.log('index = ', index)
       if (Number(index) === 1) {
         this.$router.push('/foo')
       } else if (Number(index) === 2) {
